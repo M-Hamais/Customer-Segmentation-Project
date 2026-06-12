@@ -86,19 +86,13 @@ html, body, [class*="css"] {
     padding: 1.5rem;
     margin-bottom: 1rem;
 }
-.custom-metric {
-    background-color: rgba(128, 128, 128, 0.05);
-    border: 1px solid rgba(128, 128, 128, 0.15);
-    border-radius: 12px;
-    padding: 18px 20px;
-    min-height: 105px;
+.metric-card {
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-.custom-metric:hover {
+.metric-card:hover {
     transform: translateY(-5px);
-    border-color: rgba(255, 0, 127, 0.4);
-    box-shadow: 0 10px 20px rgba(255, 0, 127, 0.15), 0 0 8px rgba(255, 0, 127, 0.10);
+    border-color: rgba(255, 0, 127, 0.4) !important;
+    box-shadow: 0 10px 20px rgba(255, 0, 127, 0.15), 0 0 8px rgba(255, 0, 127, 0.10) !important;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -134,6 +128,18 @@ df['PCA_2'] = X_pca[:, 1]
 # Header section
 st.markdown('<div class="main-title">Customer Segmentation Portal</div>', unsafe_allow_html=True)
 st.markdown('<div class="subtitle">An interactive AI dashboard powered by K-Means & PCA dimension reduction</div>', unsafe_allow_html=True)
+
+# Project Description Block
+st.markdown("""
+<div style="background-color: rgba(128, 128, 128, 0.04); border-left: 4px solid #ff007f; border-radius: 6px; padding: 14px 18px; margin-bottom: 20px;">
+    <div style="font-size: 0.92rem; line-height: 1.5; margin-bottom: 10px; color: rgba(255, 255, 255, 0.85);">
+        <b>What this portal does:</b> This interactive platform helps retail businesses instantly understand their customer base. Instead of looking at thousands of confusing individual rows, our AI analyzes two key shopping behaviors: how much a customer earns annually and how much they choose to spend at the store.
+    </div>
+    <div style="font-size: 0.92rem; line-height: 1.5; color: rgba(255, 255, 255, 0.85);">
+        <b>The Real-World Goal:</b> The system automatically groups buyers with identical shopping habits into 5 distinct 'customer personas.' This allows business managers to design personalized discount offers, create targeted loyalty rewards for VIP shoppers, and craft smart marketing strategies that fit every budget level perfectly.
+    </div>
+</div>
+""", unsafe_allow_html=True)
 
 # Sidebar - Customer Profiler
 with st.sidebar:
@@ -209,23 +215,23 @@ with tab1:
     col1, col2, col3 = st.columns(3)
     with col1:
         st.markdown(f"""
-        <div class="custom-metric">
-            <div style="font-size: 0.875rem; color: #8a8d90; margin-bottom: 4px; font-weight: 400;">Total Customer Records</div>
-            <div style="font-size: 2rem; font-weight: 700; line-height: 1.2;">{len(df)}</div>
+        <div class="metric-card" style="min-height: 110px; padding: 12px 16px; border-radius: 10px; background-color: rgba(128,128,128,0.05); border: 1px solid rgba(128,128,128,0.15); box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: flex; flex-direction: column; justify-content: space-between; width: 100%; box-sizing: border-box; margin-bottom: 15px;">
+            <div style="font-size: 0.9rem; color: #8a8d90; font-weight: 400; line-height: 1.2;">Total Customer Records</div>
+            <div style="font-size: 1.8rem; font-weight: 700; line-height: 1.1; margin: 0;">{len(df)}</div>
         </div>
         """, unsafe_allow_html=True)
     with col2:
         st.markdown(f"""
-        <div class="custom-metric">
-            <div style="font-size: 0.875rem; color: #8a8d90; margin-bottom: 4px; font-weight: 400;">Optimized Clusters Identified</div>
-            <div style="font-size: 2rem; font-weight: 700; line-height: 1.2;">{N_CLUSTERS}</div>
+        <div class="metric-card" style="min-height: 110px; padding: 12px 16px; border-radius: 10px; background-color: rgba(128,128,128,0.05); border: 1px solid rgba(128,128,128,0.15); box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: flex; flex-direction: column; justify-content: space-between; width: 100%; box-sizing: border-box; margin-bottom: 15px;">
+            <div style="font-size: 0.9rem; color: #8a8d90; font-weight: 400; line-height: 1.2;">Optimized Clusters Identified</div>
+            <div style="font-size: 1.8rem; font-weight: 700; line-height: 1.1; margin: 0;">{N_CLUSTERS}</div>
         </div>
         """, unsafe_allow_html=True)
     with col3:
         st.markdown("""
-        <div class="custom-metric">
-            <div style="font-size: 0.875rem; color: #8a8d90; margin-bottom: 4px; font-weight: 400;">Features Scaled & Modeled</div>
-            <div style="font-size: 1.15rem; font-weight: 700; line-height: 1.3; word-wrap: break-word; margin-top: 6px;">Annual Income, Spending Score</div>
+        <div class="metric-card" style="min-height: 110px; padding: 12px 16px; border-radius: 10px; background-color: rgba(128,128,128,0.05); border: 1px solid rgba(128,128,128,0.15); box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: flex; flex-direction: column; justify-content: space-between; width: 100%; box-sizing: border-box; margin-bottom: 15px;">
+            <div style="font-size: 0.9rem; color: #8a8d90; font-weight: 400; line-height: 1.2;">Features Scaled &amp; Modeled</div>
+            <div style="font-size: 1.1rem; font-weight: 700; line-height: 1.2; margin: 0; word-wrap: break-word;">Annual Income, Spending Score</div>
         </div>
         """, unsafe_allow_html=True)
         
@@ -254,11 +260,14 @@ with tab2:
     
     # Format display values: round Age to whole number and others to 2 decimals
     display_df = summary_df.copy()
-    display_df['Annual Income (k$)'] = display_df['Annual Income (k$)'].round(2)
-    display_df['Spending Score (1-100)'] = display_df['Spending Score (1-100)'].round(2)
     display_df['Age'] = display_df['Age'].round(0).astype(int)
     
-    st.table(display_df)
+    formatted_df = display_df.style.format({
+        'Annual Income (k$)': '{:.1f}',
+        'Spending Score (1-100)': '{:.0f}'
+    })
+    
+    st.table(formatted_df)
     
     st.write("")
     st.subheader("Cluster Persona Descriptions")
@@ -273,23 +282,32 @@ with tab2:
     dominant_genders = df.groupby('Cluster')['Gender'].agg(get_dominant_gender_str)
     
     # Render interactive cards for personas
-    col_a, col_b = st.columns(2)
-    for idx, (cid, info) in enumerate(CLUSTER_INFO.items()):
-        target_col = col_a if idx % 2 == 0 else col_b
+    for idx, cid in enumerate(sorted(df['Cluster'].unique())):
+        if idx % 2 == 0:
+            col_a, col_b = st.columns(2)
+            target_col = col_a
+        else:
+            target_col = col_b
+        info = CLUSTER_INFO[cid]
         with target_col:
             # Average variables for this specific cluster
             c_stats = summary_df.loc[cid]
             dom_gender = dominant_genders.loc[cid]
-            with st.container(border=True):
-                st.markdown(f"#### {info['icon']} {info['name']} (Cluster {cid})")
-                st.write(info['desc'])
-                st.markdown(f"""
-                * **Volume**: {int(c_stats['Customer Count'])} shoppers ({int(c_stats['Customer Count'] / len(df) * 100)}%)
-                * **Dominant Gender**: {dom_gender}
-                * **Average Age**: {int(round(c_stats['Age']))} years old
-                * **Average Annual Income**: ${c_stats['Annual Income (k$)']:.1f}k
-                * **Average Spending Score**: {c_stats['Spending Score (1-100)']:.1f} / 100
-                """)
+            st.markdown(f"""
+            <div class="card" style="min-height: 320px; height: 100%; display: flex; flex-direction: column; justify-content: space-between; margin-bottom: 15px; box-sizing: border-box;">
+                <div>
+                    <h4 style="margin: 0 0 10px 0; font-size: 1.25rem;">{info['icon']} {info['name']} (Cluster {cid})</h4>
+                    <p style="font-size: 0.95rem; line-height: 1.4; opacity: 0.85; margin: 0 0 15px 0;">{info['desc']}</p>
+                </div>
+                <ul style="font-size: 0.9rem; margin: 0; padding-left: 20px; line-height: 1.5; list-style-type: disc;">
+                    <li><b>Volume</b>: {int(c_stats['Customer Count'])} shoppers ({int(c_stats['Customer Count'] / len(df) * 100)}%)</li>
+                    <li><b>Dominant Gender</b>: {dom_gender}</li>
+                    <li><b>Average Age</b>: {int(round(c_stats['Age']))} years old</li>
+                    <li><b>Average Annual Income</b>: ${c_stats['Annual Income (k$)']:.1f}k</li>
+                    <li><b>Average Spending Score</b>: {int(round(c_stats['Spending Score (1-100)']))} / 100</li>
+                </ul>
+            </div>
+            """, unsafe_allow_html=True)
 
 # Tab 3: PCA Cluster Map
 with tab3:
