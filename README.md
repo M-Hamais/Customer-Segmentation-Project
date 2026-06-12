@@ -1,6 +1,6 @@
 # 👥 Customer Segmentation Using K-Means & PCA
 
-🚀 **[Launch Live Interactive Web App](Yhttps://customer-segmentation-project-1.streamlit.app/)**
+🚀 **[Launch Live Interactive Web App](https://customer-segmentation-project-1.streamlit.app/)**
 
 ---
 

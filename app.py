@@ -85,6 +85,12 @@ html, body, [class*="css"] {
     border-radius: 12px;
     padding: 1.5rem;
     margin-bottom: 1rem;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 0, 127, 0.4) !important;
+    box-shadow: 0 10px 20px rgba(255, 0, 127, 0.15), 0 0 8px rgba(255, 0, 127, 0.10) !important;
 }
 .metric-card {
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
