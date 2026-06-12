@@ -137,11 +137,11 @@ st.markdown('<div class="subtitle">An interactive AI dashboard powered by K-Mean
 
 # Project Description Block
 st.markdown("""
-<div style="background-color: rgba(128, 128, 128, 0.04); border-left: 4px solid #ff007f; border-radius: 6px; padding: 14px 18px; margin-bottom: 20px;">
-    <div style="font-size: 0.92rem; line-height: 1.5; margin-bottom: 10px; color: rgba(255, 255, 255, 0.85);">
+<div style="background-color: var(--secondary-background-color); border: 1px solid rgba(128, 128, 128, 0.2); border-left: 4px solid #ff007f; border-radius: 6px; padding: 14px 18px; margin-bottom: 20px;">
+    <div style="font-size: 0.92rem; line-height: 1.5; margin-bottom: 10px; color: var(--text-color); opacity: 0.85;">
         <b>What this portal does:</b> This interactive platform helps retail businesses instantly understand their customer base. Instead of looking at thousands of confusing individual rows, our AI analyzes two key shopping behaviors: how much a customer earns annually and how much they choose to spend at the store.
     </div>
-    <div style="font-size: 0.92rem; line-height: 1.5; color: rgba(255, 255, 255, 0.85);">
+    <div style="font-size: 0.92rem; line-height: 1.5; color: var(--text-color); opacity: 0.85;">
         <b>The Real-World Goal:</b> The system automatically groups buyers with identical shopping habits into 5 distinct 'customer personas.' This allows business managers to design personalized discount offers, create targeted loyalty rewards for VIP shoppers, and craft smart marketing strategies that fit every budget level perfectly.
     </div>
 </div>
