@@ -1,6 +1,6 @@
 # 👥 Customer Segmentation Using K-Means & PCA
 
-<a href="https://customer-segmentation-project-1.streamlit.app/" target="_blank" rel="noopener noreferrer">🚀 Launch Live Interactive Web App</a>
+🚀 **[Launch Live Interactive Web App](https://customer-segmentation-project-1.streamlit.app/)**
 
 ---
 
